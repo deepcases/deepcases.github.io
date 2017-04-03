@@ -96,16 +96,15 @@
           
           emailjs.init(" user_6pcrZEYlzy6a4T6lfVOf9");
           
-          emailjs.send("gmail","empty_example_tamplate",{
+          emailjs.send("gmail","empty_example_tamplate", {
               name: name, 
               email: email
           }).then(function(response) {
-    console.log("SUCCESS", response);
-  }, 
-  function(error) {
-    console.log("FAILED", error);
-  }
-);;
+              console.log("SUCCESS", response);
+          }, function(error) {
+              console.log("FAILED", error);
+          });
+          
       });
 
 })();
