@@ -1,1 +1,93 @@
-'use strict';(function(){'use strict';var a=document.getElementsByClassName('go_top')[0],b={goTop:function goTop(){window.scrollTo(0,0)},getRandomIntInclusive:function getRandomIntInclusive(j,k){return j=Math.ceil(j),k=Math.floor(k),Math.floor(Math.random()*(k-j+1))+j}},c=0,e=document.querySelector('.screen_1 .background');a.addEventListener('click',function(){return b.goTop()}),window.addEventListener('scroll',function(){800<=window.scrollY?(a.style.visibility='visible',a.style.opacity=1):(a.style.visibility='hidden',a.style.opacity=0)});for(var f=0;35>=f;f++){var g=document.createElement('div'),h=0;do h=b.getRandomIntInclusive(1,6);while(h==c);g.className='speed_'+h,c=h,g.textContent='1 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1 1 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 1 1 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1 1 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 1 1 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1 1 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 1 1 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1 1 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 1 ',g.setAttribute('data-allowcss3support','false'),e.appendChild(g)}$('.speed_1').marquee({startVisible:!0,gap:0,duplicated:!0,duration:2e4}),$('.speed_2').marquee({startVisible:!0,gap:0,duplicated:!0,direction:'right',duration:25000}),$('.speed_3').marquee({startVisible:!0,gap:0,duplicated:!0,duration:5e4}),$('.speed_4').marquee({startVisible:!0,gap:0,duplicated:!0,duration:3e4}),$('.speed_5').marquee({startVisible:!0,gap:0,direction:'right',duplicated:!0,duration:17500}),$('.speed_6').marquee({startVisible:!0,gap:0,duplicated:!0,duration:35000})})();
+(function() {
+    'use strict';
+
+    let go_top = document.getElementsByClassName('go_top')[0],
+        utils = {
+            goTop: function() {
+                window.scrollTo(0, 0);
+            },
+            getRandomIntInclusive: function(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+        },
+        last_speed = 0,
+        binary = '1 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1 1 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 1 1 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1 1 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 1 1 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1 1 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 1 1 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1 1 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 1 ',
+        background = document.querySelector('.screen_1 .background');
+
+    //Events
+
+    go_top.addEventListener('click', () => utils.goTop());
+
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY >= 800) {
+            go_top.style.visibility = 'visible';
+            go_top.style.opacity = 1;
+        } else {
+            go_top.style.visibility = 'hidden';
+            go_top.style.opacity = 0;
+        }
+    });
+
+    for (let i = 0; i <= 35; i++) {
+        let element = document.createElement('div'),
+            speed = 0;
+
+        do {
+            speed = utils.getRandomIntInclusive(1, 6);
+        } while (speed === last_speed)
+
+        element.className = 'speed_' + speed;
+        last_speed = speed;
+        element.textContent = binary;
+        element.setAttribute('data-allowcss3support', 'false');
+        background.appendChild(element);
+    }
+
+    $('.speed_1').marquee({
+        startVisible: true,
+        gap: 0,
+        duplicated: true,
+        duration: 20000
+    });
+
+    $('.speed_2').marquee({
+        startVisible: true,
+        gap: 0,
+        duplicated: true,
+        direction: 'right',
+        duration: 25000
+    });
+
+    $('.speed_3').marquee({
+        startVisible: true,
+        gap: 0,
+        duplicated: true,
+        duration: 50000
+    });
+
+    $('.speed_4').marquee({
+        startVisible: true,
+        gap: 0,
+        duplicated: true,
+        duration: 30000
+    });
+
+    $('.speed_5').marquee({
+        startVisible: true,
+        gap: 0,
+        direction: "right",
+        duplicated: true,
+        duration: 17500
+    });
+
+    $('.speed_6').marquee({
+        startVisible: true,
+        gap: 0,
+        duplicated: true,
+        duration: 35000
+    });
+
+})();
