@@ -89,22 +89,40 @@
         duplicated: true,
         duration: 35000
     });
-    
-      document.getElementsByClassName('submit')[0].addEventListener('click', function(){
-          var name = document.getElementsByClassName('name_input')[0].value,
-              email = document.getElementsByClassName('email_input')[0].value;
-          
-          emailjs.init(" user_6pcrZEYlzy6a4T6lfVOf9");
-          
-          emailjs.send("gmail","empty_example_tamplate", {
-              name: name, 
-              email: email
-          }).then(function(response) {
-              console.log("SUCCESS", response);
-          }, function(error) {
-              console.log("FAILED", error);
-          });
-          
-      });
+
+    document.getElementsByClassName('submit')[0].addEventListener('click', function() {
+        var name = document.getElementsByClassName('name_input')[0].value,
+            email = document.getElementsByClassName('email_input')[0].value,
+            mail = {
+                "personalizations": [{
+                    "to": [{
+                        "email": "deepcases@gmail.com"
+                    }],
+                    "subject": "Registration Request"
+                }],
+                "from": {
+                    "email": "deepcases@gmail.com"
+                },
+                "content": [{
+                    "type": "text/plain",
+                    "value": name + " ; " + email;
+                }]
+            };
+
+        $.ajax({
+            type: "POST",
+            beforeSend: function(request) {
+                request.setRequestHeader("Authorization", "Bearer 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");
+                request.setRequestHeader("Content-Type", "application/json");
+            },
+            url: "https://api.sendgrid.com/v3/mail/send",
+            data: JSON.stringify(mail),
+            processData: false,
+            success: function(msg) {
+                console.log(msg);
+            }
+        });
+
+    });
 
 })();
