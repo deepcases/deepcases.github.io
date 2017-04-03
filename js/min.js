@@ -105,7 +105,7 @@
                 },
                 "content": [{
                     "type": "text/plain",
-                    "value": name + " ; " + email;
+                    "value": name + " ; " + email
                 }]
             };
 
