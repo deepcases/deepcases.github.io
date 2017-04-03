@@ -90,7 +90,7 @@
         duration: 35000
     });
     
-      documentgetElementsByClassName('submit')[0].addEventListener('click', function(){
+      document.getElementsByClassName('submit')[0].addEventListener('click', function(){
           //emailjs.init(" user_6pcrZEYlzy6a4T6lfVOf9");
           alert('wow');
       });
