@@ -93,8 +93,13 @@
       document.getElementsByClassName('submit')[0].addEventListener('click', function(){
           var name = document.getElementsByClassName('name_input')[0].value,
               email = document.getElementsByClassName('email_input')[0].value;
-          //emailjs.init(" user_6pcrZEYlzy6a4T6lfVOf9");
-          alert(name + " " + email);
+          
+          emailjs.init(" user_6pcrZEYlzy6a4T6lfVOf9");
+          
+          emailjs.send("gmail","empty_example_tamplate",{
+              name: name, 
+              email: email
+          });
       });
 
 })();
